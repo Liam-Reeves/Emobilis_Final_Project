@@ -16,14 +16,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import net.ezra.navigation.ROUTE_ABOUT
 import net.ezra.navigation.ROUTE_HOME
-import net.ezra.navigation.ROUTE_MIT
-import net.ezra.navigation.ROUTE_SERVICES
 import net.ezra.R
 import net.ezra.navigation.ROUTE_CONTACT
 import net.ezra.navigation.ROUTE_PRODUCTS
-import net.ezra.navigation.ROUTE_SHOP
+
 
 @Composable
 fun ProductsScreen(navController: NavHostController) {

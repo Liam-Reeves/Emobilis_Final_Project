@@ -33,13 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import net.ezra.navigation.AppNavHost
 import net.ezra.BottomnavTheme
 
-data class BottomNavigationItem(
-    val title : String,
-    val selectedIcon :ImageVector,
-    val unselectedIcon: ImageVector,
-    val hasNews:Boolean,
-    val badgeCount: Int? = null,
-)
+
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
@@ -48,83 +42,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppNavHost()
             BottomnavTheme {
-                val items = listOf(
-                    BottomNavigationItem(
-                        title = "Home",
-                        selectedIcon = Icons.Filled.Home,
-                        unselectedIcon = Icons.Outlined.Home,
-                        hasNews = false,
-                    ),
 
-                    BottomNavigationItem(
-                        title = "Chat",
-                        selectedIcon = Icons.Filled.Email,
-                        unselectedIcon = Icons.Outlined.Email,
-                        hasNews = false,
-                        badgeCount = 45
-                    ),
-
-                    BottomNavigationItem(
-                        title = "Home",
-                        selectedIcon = Icons.Filled.Settings,
-                        unselectedIcon = Icons.Outlined.Settings,
-                        hasNews = true,
-                    ),
-                )
-
-                val selectedItemIndex by rememberSaveable{
-                    mutableStateOf(0)
-
-                }
-
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Scaffold(
-                        bottomBar = {
-                            NavigationBar {
-                                items.forEachIndexed { index, item ->
-                                    NavigationBarItem(
-                                        selected = selectedItemIndex == index,
-                                        onClick = {
-                                            selectedItemIndex == index
-                                            //navController.navigate(item.title)
-                                        },
-                                        label = {
-                                            Text(text = item.title)
-                                        },
-                                        alwaysShowLabel = false,
-                                        icon = {
-                                            BadgedBox(
-                                                badge = {
-                                                    if(item.badgeCount != null) {
-                                                        Badge{
-                                                            Text(text = item.badgeCount.toString())
-                                                        }
-                                                    } else if(item.hasNews) {
-                                                        Badge()
-                                                    }
-
-                                                }
-                                            ) {
-                                                Icon(
-                                                    imageVector = if(index == selectedItemIndex){
-                                                        item.selectedIcon
-                                                    } else item.unselectedIcon,
-                                                    contentDescription = item.title )
-
-                                            }
-                                        }
-                                    )
-                                }
-
-                            }
-                        }
-                    ) {
-
-                    }
-                }
             }
         }
     }

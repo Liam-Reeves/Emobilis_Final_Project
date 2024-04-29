@@ -11,17 +11,17 @@ import net.ezra.ui.SplashScreen
 import net.ezra.ui.auth.LoginScreen
 import net.ezra.ui.auth.SignupScreen
 import net.ezra.ui.contact.ContactScreen
+import net.ezra.ui.dashboard.DashboardScreen
 import net.ezra.ui.home.HomeScreen
 import net.ezra.ui.products.ProductsScreen
-
-
+import net.ezra.ui.profile.ProfileScreen
 
 
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUTE_HOME
+    startDestination: String = ROUTE_DASHBOARD
 
 
 ) {
@@ -59,9 +59,14 @@ fun AppNavHost(
             ProductsScreen(navController)
         }
 
-
         composable(ROUTE_SPLASH) {
             SplashScreen(navController)
+        }
+        composable(ROUTE_DASHBOARD) {
+            DashboardScreen(navController)
+        }
+        composable(ROUTE_PROFILE) {
+            ProfileScreen(navController)
         }
 
 

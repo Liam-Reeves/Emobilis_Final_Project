@@ -82,12 +82,69 @@ import net.ezra.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun DashboardScreen(navController: NavHostController) {
-    LazyColumn(
+
+    var selectedItemIndex by rememberSaveable {
+        mutableStateOf(0)
+    }
+
+    Scaffold(
+
+        bottomBar = {
+            NavigationBar {
+                items.forEachIndexed{ index, item ->
+                    NavigationBarItem(
+                        selected = selectedItemIndex == index,
+                        onClick = {
+                            selectedItemIndex = index
+//                                 navController.navigate(item.title)
+
+                        },
+                        label = {
+                            Text(text = item.title)
+                        },
+                        icon = {
+                            BadgedBox(
+                                badge = {
+                                    if(item.badgeCount != null){
+                                        Badge{
+                                            Text(
+                                                text = item.badgeCount.toString()
+                                            )
+                                        }
+                                    } else if(item.hasNews){
+                                        androidx.compose.material.Badge()
+                                    }
+
+                                }
+                            ) {
+                                Icon(
+                                    imageVector = if(index == selectedItemIndex) {
+                                        item.selectedIcon
+                                    } else item.unselectedIcon,
+
+                                    contentDescription = item.title,
+                                    tint = Color(0xffc219ec)
+
+                                )
+
+
+                            }
+
+                        }
+                    )
+
+                }
+            }
+        },
+        content = @Composable{
+            LazyColumn(
                 modifier = Modifier
                     .background(Color(0xffe4e3e3))
                     .fillMaxSize()
             ) {
                 item {
+
+
                     Column {
                         Row (
                             verticalAlignment = Alignment.CenterVertically,
@@ -164,7 +221,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = Color(0xfff5f0ee),
-                                    )
+                                )
                             }
 
                             Spacer(modifier = Modifier.width(10.dp))
@@ -181,7 +238,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = Color(0xfff5f0ee),
-                                    )
+                                )
                             }
                         }
                     }
@@ -341,7 +398,7 @@ fun DashboardScreen(navController: NavHostController) {
                                 Spacer(modifier = Modifier.width(5.dp))
 
                                 Card (
-                                    colors = CardDefaults.cardColors(Color(0xff )),
+                                    colors = CardDefaults.cardColors(Color(0xffc2f59b )),
                                     elevation = CardDefaults.elevatedCardElevation(5.dp),
                                     border = BorderStroke(1.dp, Color.Black),
                                     modifier = Modifier
@@ -412,7 +469,7 @@ fun DashboardScreen(navController: NavHostController) {
                                 )
                             }
                             Spacer(modifier = Modifier.width(5.dp))
-                            
+
                             Box(
                                 contentAlignment = Alignment.Center,
                                 modifier = Modifier
@@ -434,114 +491,67 @@ fun DashboardScreen(navController: NavHostController) {
 
                 }
             }
-                BottomSection()
-    
 
 
-
-
-
-
-}
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Composable
-fun BottomSection(){
-    data class  BottomNavigationItem(
-        val title: String,
-        val selectedIcon: ImageVector,
-        val unselectedIcon:ImageVector,
-        val hasNews: Boolean,
-        val badgeCount:Int? = null,
-    )
-
-    val items= listOf(
-        BottomNavigationItem(
-            title = "Home",
-            selectedIcon = Icons.Filled.Home,
-            unselectedIcon = Icons.Outlined.Home,
-            hasNews = false,
-        ),
-
-        BottomNavigationItem(
-            title = "Account",
-            selectedIcon = Icons.Filled.AccountCircle,
-            unselectedIcon = Icons.Outlined.AccountCircle,
-            hasNews = false,
-        ),
-
-        BottomNavigationItem(
-            title = "Updates",
-            selectedIcon = Icons.Filled.Build,
-            unselectedIcon = Icons.Outlined.Build,
-            hasNews = false,
-            badgeCount = 9
-        ),
-
-        BottomNavigationItem(
-            title = "Settings",
-            selectedIcon = Icons.Filled.Settings,
-            unselectedIcon = Icons.Outlined.Settings,
-            hasNews = false,
-        ),
-
-    )
-    var selectedItemIndex by rememberSaveable {
-        mutableStateOf(0)
-    }
-
-    Scaffold(
-        bottomBar = {
-            NavigationBar {
-                items.forEachIndexed{ index, item ->
-                    NavigationBarItem(
-                        selected = selectedItemIndex == index,
-                        onClick = { 
-                                  selectedItemIndex = index
-//                                 navController.navigate(item.title)
-                                  
-                        },
-                        label = {
-                                Text(text = item.title)
-                        },
-                        icon = {
-                            BadgedBox(
-                                badge = {
-                                    if(item.badgeCount != null){
-                                        Badge{
-                                            Text(
-                                                text = item.badgeCount.toString()
-                                            )
-                                        }
-                                    } else if(item.hasNews){
-                                        androidx.compose.material.Badge()
-                                    }
-                                    
-                                }
-                            ) {
-                                Icon(
-                                    imageVector = if(index == selectedItemIndex) {
-                                             item.selectedIcon 
-                                    } else item.unselectedIcon, 
-                                    
-                                    contentDescription = item.title
-                                
-                                )
-                                
-                                
-                            }
-                            
-                        }
-                    )
-                    
-                }
-            }
         }
-    ) {
 
-    }
+
+
+
+    )
 
 
 }
+
+data class  BottomNavigationItem(
+    val title: String,
+    val selectedIcon: ImageVector,
+    val unselectedIcon:ImageVector,
+    val hasNews: Boolean,
+    val badgeCount:Int? = null,
+)
+
+val items= listOf(
+    BottomNavigationItem(
+        title = "Home",
+        selectedIcon = Icons.Filled.Home,
+        unselectedIcon = Icons.Outlined.Home,
+        hasNews = false,
+    ),
+
+    BottomNavigationItem(
+        title = "Account",
+        selectedIcon = Icons.Filled.AccountCircle,
+        unselectedIcon = Icons.Outlined.AccountCircle,
+        hasNews = false,
+    ),
+
+    BottomNavigationItem(
+        title = "Updates",
+        selectedIcon = Icons.Filled.Build,
+        unselectedIcon = Icons.Outlined.Build,
+        hasNews = false,
+        badgeCount = 9
+    ),
+
+    BottomNavigationItem(
+        title = "Settings",
+        selectedIcon = Icons.Filled.Settings,
+        unselectedIcon = Icons.Outlined.Settings,
+        hasNews = false,
+    ),
+
+    )
+
+
+
+
+
+
+
+
+
+
 
 
 @Preview(showBackground = true)

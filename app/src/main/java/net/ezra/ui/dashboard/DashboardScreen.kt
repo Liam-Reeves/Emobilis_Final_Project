@@ -25,12 +25,19 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Build
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -40,16 +47,23 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItemDefaults.contentColor
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -68,9 +82,7 @@ import net.ezra.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun DashboardScreen(navController: NavHostController) {
-
-
-            LazyColumn(
+    LazyColumn(
                 modifier = Modifier
                     .background(Color(0xffe4e3e3))
                     .fillMaxSize()
@@ -137,8 +149,6 @@ fun DashboardScreen(navController: NavHostController) {
                                     fontWeight = FontWeight.SemiBold,
                                     color = Color(0xfff5f0ee),
                                 )
-
-
                             }
                             Spacer(modifier = Modifier.width(10.dp))
 
@@ -154,10 +164,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = Color(0xfff5f0ee),
-
                                     )
-
-
                             }
 
                             Spacer(modifier = Modifier.width(10.dp))
@@ -174,15 +181,9 @@ fun DashboardScreen(navController: NavHostController) {
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = Color(0xfff5f0ee),
-
                                     )
-
-
                             }
-
                         }
-
-
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     Row(
@@ -213,7 +214,12 @@ fun DashboardScreen(navController: NavHostController) {
                                     modifier = Modifier
 
                                         .clip(RoundedCornerShape(10.dp))
-                                        .padding(start = 20.dp, bottom = 10.dp, end = 10.dp, top = 20.dp)
+                                        .padding(
+                                            start = 20.dp,
+                                            bottom = 10.dp,
+                                            end = 10.dp,
+                                            top = 20.dp
+                                        )
                                         .size(width = 100.dp, height = 150.dp)
 
                                 ){
@@ -222,7 +228,12 @@ fun DashboardScreen(navController: NavHostController) {
                                         contentDescription = "Logo",
                                         modifier = Modifier
                                             .clip(CircleShape)
-                                            .padding(start = 5.dp, top = 20.dp, end = 5.dp, bottom = 5.dp)
+                                            .padding(
+                                                start = 5.dp,
+                                                top = 20.dp,
+                                                end = 5.dp,
+                                                bottom = 5.dp
+                                            )
 
                                     )
 
@@ -235,7 +246,12 @@ fun DashboardScreen(navController: NavHostController) {
                                     border = BorderStroke(1.dp, Color.Black),
                                     modifier = Modifier
                                         .clip(RoundedCornerShape(10.dp))
-                                        .padding(start = 20.dp, bottom = 10.dp, end = 10.dp, top = 20.dp)
+                                        .padding(
+                                            start = 20.dp,
+                                            bottom = 10.dp,
+                                            end = 10.dp,
+                                            top = 20.dp
+                                        )
                                         .size(width = 100.dp, height = 150.dp)
 
                                 ){
@@ -244,7 +260,12 @@ fun DashboardScreen(navController: NavHostController) {
                                         contentDescription = "Logo",
                                         modifier = Modifier
                                             .clip(CircleShape)
-                                            .padding(start = 5.dp, top = 20.dp, end = 5.dp, bottom = 5.dp)
+                                            .padding(
+                                                start = 5.dp,
+                                                top = 20.dp,
+                                                end = 5.dp,
+                                                bottom = 5.dp
+                                            )
 
                                     )
 
@@ -258,7 +279,12 @@ fun DashboardScreen(navController: NavHostController) {
                                     border = BorderStroke(1.dp, Color.Black),
                                     modifier = Modifier
                                         .clip(RoundedCornerShape(10.dp))
-                                        .padding(start = 20.dp, bottom = 10.dp, end = 10.dp, top = 20.dp)
+                                        .padding(
+                                            start = 20.dp,
+                                            bottom = 10.dp,
+                                            end = 10.dp,
+                                            top = 20.dp
+                                        )
                                         .size(width = 100.dp, height = 150.dp)
 
                                 ){
@@ -268,7 +294,12 @@ fun DashboardScreen(navController: NavHostController) {
                                         tint = Color(0xfff05a0a),
                                         modifier = Modifier
                                             .clip(CircleShape)
-                                            .padding(start = 5.dp, top = 5.dp, end = 5.dp, bottom = 5.dp)
+                                            .padding(
+                                                start = 5.dp,
+                                                top = 5.dp,
+                                                end = 5.dp,
+                                                bottom = 5.dp
+                                            )
 
                                     )
 
@@ -281,7 +312,12 @@ fun DashboardScreen(navController: NavHostController) {
                                     border = BorderStroke(1.dp, Color.Black),
                                     modifier = Modifier
                                         .clip(RoundedCornerShape(10.dp))
-                                        .padding(start = 20.dp, bottom = 10.dp, end = 10.dp, top = 20.dp)
+                                        .padding(
+                                            start = 20.dp,
+                                            bottom = 10.dp,
+                                            end = 10.dp,
+                                            top = 20.dp
+                                        )
                                         .size(width = 100.dp, height = 150.dp)
 
                                 ){
@@ -291,7 +327,12 @@ fun DashboardScreen(navController: NavHostController) {
                                         tint = Color(0xfff05a0a),
                                         modifier = Modifier
                                             .clip(CircleShape)
-                                            .padding(start = 5.dp, top = 5.dp, end = 5.dp, bottom = 5.dp)
+                                            .padding(
+                                                start = 5.dp,
+                                                top = 5.dp,
+                                                end = 5.dp,
+                                                bottom = 5.dp
+                                            )
 
                                     )
 
@@ -305,7 +346,12 @@ fun DashboardScreen(navController: NavHostController) {
                                     border = BorderStroke(1.dp, Color.Black),
                                     modifier = Modifier
                                         .clip(RoundedCornerShape(10.dp))
-                                        .padding(start = 10.dp, bottom = 10.dp, end = 10.dp, top = 20.dp)
+                                        .padding(
+                                            start = 10.dp,
+                                            bottom = 10.dp,
+                                            end = 10.dp,
+                                            top = 20.dp
+                                        )
                                         .size(width = 100.dp, height = 150.dp)
 
                                 ){
@@ -315,13 +361,14 @@ fun DashboardScreen(navController: NavHostController) {
                                         tint = Color(0xfff05a0a),
                                         modifier = Modifier
                                             .clip(CircleShape)
-                                            .padding(start = 5.dp, top = 5.dp, end = 5.dp, bottom = 5.dp)
-
+                                            .padding(
+                                                start = 5.dp,
+                                                top = 5.dp,
+                                                end = 5.dp,
+                                                bottom = 5.dp
+                                            )
                                     )
-
                                 }
-
-
                             }
                         }
                     }
@@ -342,7 +389,6 @@ fun DashboardScreen(navController: NavHostController) {
                                     .clip(CircleShape)
                                     .background(Color(0xffd8f9bf))
                                     .size(width = 100.dp, height = 100.dp)
-
                             ){
                                 Icon(
                                     imageVector = Icons.Default.AccountBox,
@@ -365,8 +411,8 @@ fun DashboardScreen(navController: NavHostController) {
                                     modifier = Modifier.padding(10.dp)
                                 )
                             }
-
                             Spacer(modifier = Modifier.width(5.dp))
+                            
                             Box(
                                 contentAlignment = Alignment.Center,
                                 modifier = Modifier
@@ -388,10 +434,111 @@ fun DashboardScreen(navController: NavHostController) {
 
                 }
             }
+                BottomSection()
+    
 
 
 
 
+
+
+}
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@Composable
+fun BottomSection(){
+    data class  BottomNavigationItem(
+        val title: String,
+        val selectedIcon: ImageVector,
+        val unselectedIcon:ImageVector,
+        val hasNews: Boolean,
+        val badgeCount:Int? = null,
+    )
+
+    val items= listOf(
+        BottomNavigationItem(
+            title = "Home",
+            selectedIcon = Icons.Filled.Home,
+            unselectedIcon = Icons.Outlined.Home,
+            hasNews = false,
+        ),
+
+        BottomNavigationItem(
+            title = "Account",
+            selectedIcon = Icons.Filled.AccountCircle,
+            unselectedIcon = Icons.Outlined.AccountCircle,
+            hasNews = false,
+        ),
+
+        BottomNavigationItem(
+            title = "Updates",
+            selectedIcon = Icons.Filled.Build,
+            unselectedIcon = Icons.Outlined.Build,
+            hasNews = false,
+            badgeCount = 9
+        ),
+
+        BottomNavigationItem(
+            title = "Settings",
+            selectedIcon = Icons.Filled.Settings,
+            unselectedIcon = Icons.Outlined.Settings,
+            hasNews = false,
+        ),
+
+    )
+    var selectedItemIndex by rememberSaveable {
+        mutableStateOf(0)
+    }
+
+    Scaffold(
+        bottomBar = {
+            NavigationBar {
+                items.forEachIndexed{ index, item ->
+                    NavigationBarItem(
+                        selected = selectedItemIndex == index,
+                        onClick = { 
+                                  selectedItemIndex = index
+//                                 navController.navigate(item.title)
+                                  
+                        },
+                        label = {
+                                Text(text = item.title)
+                        },
+                        icon = {
+                            BadgedBox(
+                                badge = {
+                                    if(item.badgeCount != null){
+                                        Badge{
+                                            Text(
+                                                text = item.badgeCount.toString()
+                                            )
+                                        }
+                                    } else if(item.hasNews){
+                                        androidx.compose.material.Badge()
+                                    }
+                                    
+                                }
+                            ) {
+                                Icon(
+                                    imageVector = if(index == selectedItemIndex) {
+                                             item.selectedIcon 
+                                    } else item.unselectedIcon, 
+                                    
+                                    contentDescription = item.title
+                                
+                                )
+                                
+                                
+                            }
+                            
+                        }
+                    )
+                    
+                }
+            }
+        }
+    ) {
+
+    }
 
 
 }

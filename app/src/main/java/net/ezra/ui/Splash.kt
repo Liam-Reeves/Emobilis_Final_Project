@@ -13,12 +13,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.delay
 import net.ezra.R
+import net.ezra.navigation.ROUTE_DASHBOARD
 import net.ezra.navigation.ROUTE_HOME
 
 
@@ -40,28 +42,23 @@ fun SplashScreen(navController: NavHostController) {
                 easing = {
                     OvershootInterpolator(4f).getInterpolation(it)
                 }))
-        // Customize the delay time
+        // Customize the delay time\\\\\\\
         delay(3000L)
-        navController.navigate(ROUTE_HOME)
+        navController.navigate(ROUTE_DASHBOARD)
     }
 
     // Image
 
-    Column (
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-
-        Image(painter = painterResource(id = R.drawable.logo),
-            contentDescription = "Logo",
-            modifier = Modifier.scale(scale.value)
-        )
-
-        Text("Apen Softwares")
-
-
-
-    }
+   Box(
+       contentAlignment = Alignment.Center
+   ) {
+       Image(
+           contentScale = ContentScale.Crop,
+           painter = painterResource(id = R.drawable.yaya),
+           contentDescription = "",
+           modifier = Modifier.scale(scale.value)
+       )
+   }
 
 
 

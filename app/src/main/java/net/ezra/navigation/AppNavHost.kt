@@ -21,7 +21,7 @@ import net.ezra.ui.profile.ProfileScreen
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUTE_DASHBOARD
+    startDestination: String = ROUTE_SPLASH
 
 
 ) {

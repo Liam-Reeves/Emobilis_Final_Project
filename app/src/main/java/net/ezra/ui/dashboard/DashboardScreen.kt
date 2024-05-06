@@ -216,7 +216,7 @@ fun DashboardScreen(navController: NavHostController) {
 
                                     },
 
-                                    colors = NavigationDrawerItemDefaults.colors(Color(0xffec0ac9)),
+                                    colors = NavigationDrawerItemDefaults.colors(Color(0xff87CEEB)),
                                     modifier = Modifier
                                         .padding(NavigationDrawerItemDefaults.ItemPadding)
 //
@@ -255,13 +255,17 @@ fun DashboardScreen(navController: NavHostController) {
 
                           }
                       },
-                      colors = TopAppBarDefaults.topAppBarColors(Color(0xffec0ac9)),
+                      colors = TopAppBarDefaults.topAppBarColors(Color(0xff87CEEB)),
 
                   )
             },
 
+
             bottomBar = {
-                NavigationBar {
+                NavigationBar(
+                    modifier = Modifier
+                        .background(Color(0xff8AE8EC ))
+                ) {
                     items.forEachIndexed{ index, item ->
                         NavigationBarItem(
                             selected = selectedItemIndex == index,
@@ -294,7 +298,7 @@ fun DashboardScreen(navController: NavHostController) {
                                         } else item.unselectedIcon,
 
                                         contentDescription = item.title,
-                                        tint = Color(0xFFEFF2FF)
+                                        tint = Color(0xff87CEEB)
 
                                     )
 
@@ -307,6 +311,7 @@ fun DashboardScreen(navController: NavHostController) {
 
                     }
                 }
+
             },
             content = @Composable{
                 LazyColumn(
@@ -315,8 +320,6 @@ fun DashboardScreen(navController: NavHostController) {
                         .fillMaxSize()
                 ) {
                     item {
-
-
                         Column {
                             Row (
                                 verticalAlignment = Alignment.CenterVertically,
@@ -335,7 +338,7 @@ fun DashboardScreen(navController: NavHostController) {
                                 Spacer(modifier = Modifier.width(90.dp))
 
                                 Image(
-                                    painter = painterResource(id = R.drawable.mother),
+                                    painter = painterResource(id = R.drawable.yaya),
                                     contentDescription ="",
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier

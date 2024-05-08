@@ -14,7 +14,8 @@ import net.ezra.ui.contact.ContactScreen
 import net.ezra.ui.dashboard.DashboardScreen
 import net.ezra.ui.home.HomeScreen
 import net.ezra.ui.products.ProductsScreen
-import net.ezra.ui.profile.ProfileScreen
+import net.ezra.ui.profiles.ProfilesScreen
+import net.ezra.ui.registration.RegistrationScreen
 
 
 @Composable
@@ -65,9 +66,19 @@ fun AppNavHost(
         composable(ROUTE_DASHBOARD) {
             DashboardScreen(navController)
         }
-        composable(ROUTE_PROFILE) {
-            ProfileScreen(navController)
+        composable(ROUTE_REGISTRATION) {
+            RegistrationScreen(navController )
         }
+
+        composable(ROUTE_PROFILES) {
+            ProfilesScreen(navController )
+        }
+
+        composable(ROUTE_DIALOG) {
+            ProfilesScreen(navController )
+        }
+
+
 
 
 

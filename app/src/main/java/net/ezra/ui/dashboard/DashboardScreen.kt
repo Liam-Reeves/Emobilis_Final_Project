@@ -50,6 +50,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItemDefaults.contentColor
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationBar
@@ -86,10 +87,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-
 import kotlinx.coroutines.launch
 import net.ezra.R
-import net.ezra.navigation.ROUTE_PROFILE
+import net.ezra.navigation.ROUTE_REGISTRATION
 
 data class NavigationItem (
     val title: String,
@@ -138,7 +138,7 @@ val items= listOf(
     ),
 
     BottomNavigationItem(
-        title = "Account",
+        title = "History",
         selectedIcon = Icons.Filled.AccountCircle,
         unselectedIcon = Icons.Outlined.AccountCircle,
         hasNews = false,
@@ -204,7 +204,7 @@ fun DashboardScreen(navController: NavHostController) {
                                                          }else item.unselectedIcon,
                                             contentDescription =item.title ,
                                             tint = if (index == selectedItemIndex) {
-                                                Color((0xffec0ac9))
+                                                Color((0xff87CEEB))
                                             } else Color.Unspecified
                                             )
                                     },
@@ -256,6 +256,8 @@ fun DashboardScreen(navController: NavHostController) {
                           }
                       },
                       colors = TopAppBarDefaults.topAppBarColors(Color(0xff87CEEB)),
+                      modifier = Modifier
+                          .clip(RoundedCornerShape(40.dp))
 
                   )
             },
@@ -263,8 +265,7 @@ fun DashboardScreen(navController: NavHostController) {
 
             bottomBar = {
                 NavigationBar(
-                    modifier = Modifier
-                        .background(Color(0xff8AE8EC ))
+
                 ) {
                     items.forEachIndexed{ index, item ->
                         NavigationBarItem(
@@ -306,11 +307,14 @@ fun DashboardScreen(navController: NavHostController) {
                                 }
 
                             },
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(20.dp))
 
                         )
 
                     }
                 }
+
 
             },
             content = @Composable{
@@ -342,6 +346,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     contentDescription ="",
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
+                                        .padding(top = 100.dp)
                                         .size(width = 200.dp, height = 200.dp)
                                         .clip(CircleShape)
                                         .weight(3f)
@@ -371,16 +376,18 @@ fun DashboardScreen(navController: NavHostController) {
                                     contentAlignment = Alignment.Center,
                                     modifier = Modifier
                                         .clip(RoundedCornerShape(30.dp))
-                                        .background(Color(0xffec0ac9))
+                                        .background(Color(0xffFFB6C1))
                                         .size(width = 200.dp, height = 120.dp)
 
                                 ){
                                     Text(
-                                        text = "Great Deals",
+                                        text = "Child Care",
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.SemiBold,
                                         color = Color(0xfff5f0ee),
                                     )
+                                    Spacer(modifier = Modifier.width(5.dp))
+
                                 }
                                 Spacer(modifier = Modifier.width(10.dp))
 
@@ -388,15 +395,19 @@ fun DashboardScreen(navController: NavHostController) {
                                     contentAlignment = Alignment.Center,
                                     modifier = Modifier
                                         .clip(RoundedCornerShape(30.dp))
-                                        .background(Color(0xff8808e6))
+                                        .background(Color(0xffCBC3E3))
                                         .size(width = 200.dp, height = 120.dp)
                                 ){
                                     Text(
-                                        text = "Great Deals",
+                                        text = "Cooking",
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.SemiBold,
                                         color = Color(0xfff5f0ee),
                                     )
+
+                                    Spacer(modifier = Modifier.width(5.dp))
+
+
                                 }
 
                                 Spacer(modifier = Modifier.width(10.dp))
@@ -405,15 +416,19 @@ fun DashboardScreen(navController: NavHostController) {
                                     contentAlignment = Alignment.Center,
                                     modifier = Modifier
                                         .clip(RoundedCornerShape(30.dp))
-                                        .background(Color(0xffe9550c))
+                                        .background(Color(0xffFFD580))
                                         .size(width = 200.dp, height = 120.dp)
                                 ){
                                     Text(
-                                        text = "Great Deals",
+                                        text = "Laundry",
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.SemiBold,
                                         color = Color(0xfff5f0ee),
                                     )
+                                    Spacer(modifier = Modifier.width(5.dp))
+
+
+
                                 }
                             }
                         }
@@ -440,7 +455,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     horizontalArrangement = Arrangement.SpaceBetween,
                                 ) {
                                     Card (
-
+                                        colors =CardDefaults.cardColors(Color()),
                                         elevation = CardDefaults.elevatedCardElevation(5.dp),
                                         border = BorderStroke(1.dp, Color.Black),
                                         modifier = Modifier
@@ -455,7 +470,7 @@ fun DashboardScreen(navController: NavHostController) {
                                             .size(width = 100.dp, height = 150.dp)
 
                                     ){
-                                        Icon(
+                                        Image(
                                             painter = painterResource(id = R.drawable.care) ,
                                             contentDescription = "Logo",
                                             modifier = Modifier
@@ -473,7 +488,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     Spacer(modifier = Modifier.width(5.dp))
 
                                     Card (
-
+                                        colors =CardDefaults.cardColors(Color.Transparent),
                                         elevation = CardDefaults.elevatedCardElevation(5.dp),
                                         border = BorderStroke(1.dp, Color.Black),
                                         modifier = Modifier
@@ -487,9 +502,10 @@ fun DashboardScreen(navController: NavHostController) {
                                             .size(width = 100.dp, height = 150.dp)
 
                                     ){
-                                        Icon(
+                                        Image(
                                             painter = painterResource(id = R.drawable.laundry) ,
                                             contentDescription = "Logo",
+
                                             modifier = Modifier
                                                 .clip(CircleShape)
                                                 .padding(
@@ -506,7 +522,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     Spacer(modifier = Modifier.width(5.dp))
 
                                     Card (
-                                        colors = CardDefaults.cardColors(Color(0xfff5a59b  )),
+                                        colors =CardDefaults.cardColors(Color.Transparent),
                                         elevation = CardDefaults.elevatedCardElevation(5.dp),
                                         border = BorderStroke(1.dp, Color.Black),
                                         modifier = Modifier
@@ -520,9 +536,10 @@ fun DashboardScreen(navController: NavHostController) {
                                             .size(width = 100.dp, height = 150.dp)
 
                                     ){
-                                        Icon(
+                                        Image(
                                             painter = painterResource(id = R.drawable.cooking) ,
                                             contentDescription = "Logo",
+
 
                                             modifier = Modifier
                                                 .clip(CircleShape)
@@ -539,7 +556,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     Spacer(modifier = Modifier.width(5.dp))
 
                                     Card (
-
+                                        colors =CardDefaults.cardColors(Color.Transparent),
                                         elevation = CardDefaults.elevatedCardElevation(5.dp),
                                         border = BorderStroke(1.dp, Color.Black),
                                         modifier = Modifier
@@ -553,7 +570,7 @@ fun DashboardScreen(navController: NavHostController) {
                                             .size(width = 100.dp, height = 150.dp)
 
                                     ){
-                                        Icon(
+                                        Image(
                                             painter = painterResource(id = R.drawable.sweep) ,
                                             contentDescription = "Logo",
 
@@ -573,7 +590,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     Spacer(modifier = Modifier.width(5.dp))
 
                                     Card (
-                                        colors = CardDefaults.cardColors(Color(0xffc2f59b )),
+                                        colors =CardDefaults.cardColors(Color.Transparent),
                                         elevation = CardDefaults.elevatedCardElevation(5.dp),
                                         border = BorderStroke(1.dp, Color.Black),
                                         modifier = Modifier
@@ -587,10 +604,10 @@ fun DashboardScreen(navController: NavHostController) {
                                             .size(width = 100.dp, height = 150.dp)
 
                                     ){
-                                        Icon(
+                                        Image(
                                             painter = painterResource(id = R.drawable.ic_app_logo) ,
                                             contentDescription = "Logo",
-                                            tint = Color(0xfff05a0a),
+
                                             modifier = Modifier
                                                 .clip(CircleShape)
                                                 .padding(
@@ -612,12 +629,13 @@ fun DashboardScreen(navController: NavHostController) {
                        ) {
                            Card(
 
-                               onClick = {navController.navigate(ROUTE_PROFILE) },
+                               onClick = {navController.navigate(ROUTE_REGISTRATION) },
                                elevation = CardDefaults.cardElevation(20.dp),
-                               colors = CardDefaults.cardColors(Color.Blue),
+                               colors = CardDefaults.cardColors(Color(0xff87CEEB)),
                                modifier = Modifier
-                                .padding( start = 80.dp, end = 20.dp, )
-                                   .size(width = 200.dp, height = 150.dp)
+                                   .padding(start = 80.dp, end = 50.dp,)
+                                   .size(width = 300.dp, height = 100.dp)
+                                   .clip(RoundedCornerShape(40.dp))
                            ) {
                                Text(
                                    text = "Get Started",
@@ -625,7 +643,7 @@ fun DashboardScreen(navController: NavHostController) {
                                    fontSize = 20.sp,
                                    fontWeight = FontWeight.SemiBold,
                                    color = Color.White,
-                                   modifier = Modifier.padding(start = 50.dp, top = 70.dp, end = 50.dp)
+                                   modifier = Modifier.padding(start = 100.dp, top = 30.dp, end = 50.dp, )
 
                                    )
 

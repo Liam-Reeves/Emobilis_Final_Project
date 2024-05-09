@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -343,11 +344,17 @@ fun DashboardScreen(navController: NavHostController) {
 
                                 Image(
                                     painter = painterResource(id = R.drawable.yaya),
-                                    contentDescription ="",
+                                    contentDescription =null,
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
+                                        .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                                        .border(
+                                            width = 1.dp,
+                                            color = Color.LightGray,
+                                            shape = CircleShape,
+                                        )
                                         .padding(top = 100.dp)
-                                        .size(width = 200.dp, height = 200.dp)
+                                        .size(100.dp)
                                         .clip(CircleShape)
                                         .weight(3f)
                                 )
@@ -455,7 +462,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     horizontalArrangement = Arrangement.SpaceBetween,
                                 ) {
                                     Card (
-                                        colors =CardDefaults.cardColors(Color()),
+                                        colors =CardDefaults.cardColors(Color(0xffFC7EF5 )),
                                         elevation = CardDefaults.elevatedCardElevation(5.dp),
                                         border = BorderStroke(1.dp, Color.Black),
                                         modifier = Modifier
@@ -488,7 +495,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     Spacer(modifier = Modifier.width(5.dp))
 
                                     Card (
-                                        colors =CardDefaults.cardColors(Color.Transparent),
+                                        colors =CardDefaults.cardColors(Color(0xffF98888 )),
                                         elevation = CardDefaults.elevatedCardElevation(5.dp),
                                         border = BorderStroke(1.dp, Color.Black),
                                         modifier = Modifier
@@ -522,7 +529,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     Spacer(modifier = Modifier.width(5.dp))
 
                                     Card (
-                                        colors =CardDefaults.cardColors(Color.Transparent),
+                                        colors =CardDefaults.cardColors(Color(0xff889BF9 )),
                                         elevation = CardDefaults.elevatedCardElevation(5.dp),
                                         border = BorderStroke(1.dp, Color.Black),
                                         modifier = Modifier
@@ -556,7 +563,7 @@ fun DashboardScreen(navController: NavHostController) {
                                     Spacer(modifier = Modifier.width(5.dp))
 
                                     Card (
-                                        colors =CardDefaults.cardColors(Color.Transparent),
+                                        colors =CardDefaults.cardColors(Color(0xffAF88F9 )),
                                         elevation = CardDefaults.elevatedCardElevation(5.dp),
                                         border = BorderStroke(1.dp, Color.Black),
                                         modifier = Modifier

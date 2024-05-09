@@ -10,9 +10,11 @@ import androidx.navigation.compose.rememberNavController
 import net.ezra.ui.SplashScreen
 import net.ezra.ui.auth.LoginScreen
 import net.ezra.ui.auth.SignupScreen
+import net.ezra.ui.authDialog.DialogScreen
 import net.ezra.ui.contact.ContactScreen
 import net.ezra.ui.dashboard.DashboardScreen
 import net.ezra.ui.home.HomeScreen
+import net.ezra.ui.locating.LocationScreen
 import net.ezra.ui.products.ProductsScreen
 import net.ezra.ui.profiles.ProfilesScreen
 import net.ezra.ui.registration.RegistrationScreen
@@ -75,7 +77,11 @@ fun AppNavHost(
         }
 
         composable(ROUTE_DIALOG) {
-            ProfilesScreen(navController )
+            DialogScreen(navController)
+        }
+
+        composable(ROUTE_LOCATION) {
+           LocationScreen(navController)
         }
 
 

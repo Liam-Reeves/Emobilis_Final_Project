@@ -71,6 +71,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx:20.3.0'
     implementation 'com.google.firebase:firebase-auth-ktx:23.0.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-compose:2.7.0'
+    implementation 'androidx.compose.ui:ui-google-maps:1.4.0'
+    implementation 'com.google.android.gms:play-services-maps:18.2.0'
     kapt "com.google.dagger:hilt-android-compiler:2.42"
 
 
@@ -83,6 +85,8 @@ dependencies {
     implementation  "androidx.navigation:navigation-compose:2.4.0-alpha07"
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.18.0"
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
+
+
 
 
 }

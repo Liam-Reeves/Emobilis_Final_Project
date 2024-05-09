@@ -2,6 +2,7 @@ package net.ezra.ui.profiles
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,10 +10,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Badge
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Build
@@ -24,6 +27,9 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalDrawerSheet
@@ -68,32 +74,46 @@ import net.ezra.R
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProfilesScreen(navController: NavHostController, profile: UserProfile){
+fun ProfilesScreen(navController: NavHostController){
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(300.dp)
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.mayacaregiver),
+            contentDescription = "Profile Image",
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+    Spacer(modifier = Modifier.height(3.dp))
 
 
 
-    LazyColumn() {
+    LazyColumn(
+
+        modifier = Modifier
+            .background(Color.White)
+            .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
+
+    ) {
                     item {
                         Row {
-                            Text(   text = profile.name,
+                            Text(   text = "Arya Stark",
                                     textAlign = TextAlign.Left,
                                     fontWeight = FontWeight.ExtraBold,
                                     fontSize = 20.sp,
                                     modifier = Modifier.padding(start = 6.dp)
-
                                 )
-
-
                         }
                         Spacer(modifier = Modifier.height(3.dp))
                         Row {
-                            Text(   text = profile.age.toString(),
+                            Text(   text ="25 Years",
                                     textAlign = TextAlign.Left,
                                     fontWeight = FontWeight.Light,
                                     fontSize = 13.sp,
                                     color = Color(0xff87CEEB),
                                     modifier = Modifier.padding(start = 6.dp)
-
                                 )
                         }
                         Spacer(modifier = Modifier.height(3.dp))
@@ -113,9 +133,119 @@ fun ProfilesScreen(navController: NavHostController, profile: UserProfile){
                                 )
                         }
                         Row {
+                                    Text(
+                                        text = "About Arya",
+                                        fontWeight = FontWeight.ExtraBold,
+                                        color = Color.Black,
+                                        fontSize = 20.sp,
+                                        modifier = Modifier.padding(start = 6.dp)
+                                    )
+                        }
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Row {
+                            Text(text = "Lorem ipsum dolor sit amet. Qui veniam aspernatur 33 amet dolor qui impedit accusamus et laborum nulla sed pariatur asperiores aut eaque assumenda aut eveniet debitis. A placeat rerum qui enim illo id rerum exercitationem 33 magnam accusantium eos sunt voluptate sit voluptate natus. Id voluptatem eligendi qui voluptatem ducimus sit cupiditate esse sit galisum pariatur.\n" +
+                                    "\n" +
+                                    "Et quae aspernatur et ipsam molestiae et aliquid cumque sed eaque mollitia et sunt enim. Et autem deleniti aut obcaecati nisi sed laudantium minus?\n" +
+                                    "\n" +
+                                    "Ut aspernatur omnis vel inventore incidunt ut aperiam voluptate ut voluptatem quas. Qui minus voluptatibus et suscipit perferendis ut voluptates voluptates ut atque necessitatibus eos neque nihil.")
+                        }
+                        Spacer(modifier = Modifier.height(3.dp))
+
+                        Row {
+                            Text(
+                                text = "Working Preferences",
+                                fontWeight = FontWeight.ExtraBold,
+                                color = Color.Black,
+                                fontSize = 20.sp,
+                                modifier = Modifier.padding(start = 6.dp)
+                                )
+
+
 
                         }
-                    }
+                        Spacer(modifier = Modifier.height(10.dp))
+
+                        Row {
+                            Card(
+                                colors = CardDefaults.cardColors(Color(0xff87CEEB)),
+                                elevation = CardDefaults.cardElevation(5.dp),
+                                modifier = Modifier
+                                    .padding(start = 6.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                            ) {
+                                Text(
+                                    text = "Work Hours = 8 AM - 5 PM",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 15.sp,)
+                            }
+                            Spacer(modifier = Modifier.width(3.dp))
+
+                            Card(
+                                colors = CardDefaults.cardColors(Color(0xffF9F26C )),
+                                elevation = CardDefaults.cardElevation(5.dp),
+                                modifier = Modifier
+                                    .padding(start = 6.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                            ) {
+                                Text(
+                                    text = "Can ably take care  of young children",
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White,
+                                    fontSize = 15.sp,)
+                            }
+
+                            Spacer(modifier = Modifier.width(3.dp))
+
+                            Card(
+                                colors = CardDefaults.cardColors(Color(0xff6CF979  )),
+                                elevation = CardDefaults.cardElevation(5.dp),
+                                modifier = Modifier
+                                    .padding(start = 6.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                            ) {
+                                Text(
+                                    text = "Expert in preparing African Dishes",
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White,
+                                    fontSize = 15.sp,)
+                            }
+
+                            Spacer(modifier = Modifier.width(3.dp))
+
+                            Card(
+                                colors = CardDefaults.cardColors(Color(0xffF9726C  )),
+                                elevation = CardDefaults.cardElevation(5.dp),
+                                modifier = Modifier
+                                    .padding(start = 6.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                            ) {
+                                Text(
+                                    text = "Expert in managing laundry",
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 15.sp,)
+                            }
+
+                            }
+                            Spacer(modifier = Modifier.height(12.dp))
+
+                        Button(
+                            onClick = {
+
+                        },
+                            modifier = Modifier
+                                .size(width = 200.dp, height = 200.dp)
+                                .clip(RoundedCornerShape(10.dp))
+                                .background(Color(0xff87CEEB))
+
+                            ) {
+                            Text(
+                                text = "Connect with Arya",
+                                )
+
+                        }
+
+                        }
                 }
 
             }

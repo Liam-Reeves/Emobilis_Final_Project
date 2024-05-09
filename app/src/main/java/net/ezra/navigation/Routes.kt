@@ -13,6 +13,7 @@ const val ROUTE_PROFILES = "profile"
 const val ROUTE_REGISTRATION = "registration"
 const val ROUTE_DIALOG = "dialog"
 const val ROUTE_GOOGLE_SIGN_IN = "googlesignin"
+const val ROUTE_LOCATION = "location"
 
 
 

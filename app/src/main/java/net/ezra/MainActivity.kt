@@ -46,9 +46,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.auth.api.identity.Identity
 import net.ezra.navigation.AppNavHost
 
-import net.ezra.ui.googlesignin.GoogleAuthUiClient
-import net.ezra.ui.googlesignin.SignInScreen
-import net.ezra.ui.googlesignin.SignInViewModel
+
 
 
 class MainActivity : ComponentActivity() {
